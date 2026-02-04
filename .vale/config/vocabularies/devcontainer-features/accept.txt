@@ -1,0 +1,8 @@
+autosuggestions?
+CLI
+[dD]ev
+devcontainers?
+[fF]ish
+[sS]hell[cC]heck
+uv
+[zZ]sh

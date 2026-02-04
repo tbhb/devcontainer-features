@@ -4,6 +4,8 @@
 set shell := ['uv', 'run', '--frozen', 'bash', '-euo', 'pipefail', '-c']
 set positional-arguments
 
+pnpm := "pnpm exec"
+
 # List available recipes
 default:
     @just --list
@@ -12,8 +14,16 @@ default:
 # Setup
 # ------------------------------------------------------------------------------
 
-# Install dependencies
-install:
+# Install all dependencies (Python + Node.js)
+install: install-node install-python
+
+# Install only Node.js dependencies
+install-node:
+    #!/usr/bin/env bash
+    pnpm install --frozen-lockfile
+
+# Install only Python dependencies
+install-python:
     #!/usr/bin/env bash
     uv sync --frozen
 
@@ -22,7 +32,7 @@ install:
 # ------------------------------------------------------------------------------
 
 # Run all linters
-lint: lint-spelling lint-yaml lint-shell
+lint: lint-spelling lint-yaml lint-shell lint-json lint-docs
 
 # Check spelling
 lint-spelling:
@@ -37,9 +47,34 @@ lint-shell:
     #!/usr/bin/env bash
     shellcheck src/*/install.sh test/*/*.sh
 
-# Format code (fix spelling)
+# Lint JSON files
+lint-json:
+    {{pnpm}} biome check --files-ignore-unknown=true .
+
+# Lint documentation
+lint-docs: lint-markdown lint-prose
+
+# Lint Markdown files
+lint-markdown *args:
+    {{pnpm}} markdownlint-cli2 {{ if args == "" { '"**/*.md"' } else { args } }}
+
+# Lint prose in Markdown files
+lint-prose *args:
+    vale {{ if args == "" { "src/**/*.md README.md" } else { args } }}
+
+# Format code
 format:
     codespell -w
+    {{pnpm}} biome format --write .
+
+# Fix code issues
+fix:
+    {{pnpm}} biome format --write .
+    {{pnpm}} biome check --write .
+
+# Sync Vale styles and dictionaries
+vale-sync:
+    vale sync
 
 # ------------------------------------------------------------------------------
 # Pre-commit

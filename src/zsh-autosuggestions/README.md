@@ -1,6 +1,6 @@
 # zsh-autosuggestions
 
-Installs [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), a fish-like autosuggestions plugin for zsh.
+Installs [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), an autosuggestions plugin for zsh inspired by the Fish shell.
 
 ## Usage
 

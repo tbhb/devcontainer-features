@@ -11,7 +11,5 @@
       "description": "Version of ShellCheck to install (e.g., '0.10.0' or 'latest')"
     }
   },
-  "installsAfter": [
-    "ghcr.io/devcontainers/features/common-utils"
-  ]
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
 }

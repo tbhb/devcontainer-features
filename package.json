@@ -1,0 +1,9 @@
+{
+  "name": "devcontainer-features",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "devDependencies": {
+    "@biomejs/biome": "2.3.10",
+    "markdownlint-cli2": "0.20.0"
+  }
+}

@@ -9,10 +9,11 @@ dev = [
     "codespell>=2.4",
     "yamllint>=1.35",
     "prek>=0.2",
+    "vale>=3.13",
 ]
 
 [tool.codespell]
-skip = ".git,*.lock,node_modules"
+skip = ".git,uv.lock,pnpm-lock.yaml,node_modules"
 ignore-words-list = "crate,implementors"
 
 [tool.yamllint]

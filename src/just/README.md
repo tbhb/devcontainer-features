@@ -1,4 +1,4 @@
-# just
+# Just
 
 Installs [just](https://github.com/casey/just), a handy way to save and run project-specific commands.
 

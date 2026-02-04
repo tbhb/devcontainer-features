@@ -5,6 +5,15 @@ __pycache__/
 .venv/
 .Python
 
+# Node.js
+node_modules/
+
+# Vale (synced packages)
+.vale/Google/
+.vale/write-good/
+.vale/proselint/
+.vale/ai-tells/
+
 # IDE
 .idea/
 .vscode/

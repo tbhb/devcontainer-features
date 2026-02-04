@@ -1,4 +1,4 @@
-# Dev Container Features
+# Dev container features
 
 Custom [Dev Container Features](https://containers.dev/implementors/features/) for development environments.
 
@@ -14,14 +14,14 @@ Reference features in your `devcontainer.json`:
 }
 ```
 
-## Available Features
+## Available features
 
 | Feature | Description |
 |---------|-------------|
 | [just](src/just) | Command runner for project-specific tasks |
 | [shellcheck](src/shellcheck) | Static analysis tool for shell scripts |
-| [zsh-autosuggestions](src/zsh-autosuggestions) | Fish-like autosuggestions for zsh |
-| [zsh-syntax-highlighting](src/zsh-syntax-highlighting) | Fish-like syntax highlighting for zsh |
+| [zsh-autosuggestions](src/zsh-autosuggestions) | autosuggestions for zsh (Fish shell-style) |
+| [zsh-syntax-highlighting](src/zsh-syntax-highlighting) | Syntax highlighting for zsh (Fish shell-style) |
 
 ## Development
 
@@ -61,7 +61,7 @@ just build-test <feature>
 just shell-test <feature>
 ```
 
-### Creating a new feature
+### Creating a feature
 
 1. Create a new directory under `src/<feature-name>/`
 2. Add `devcontainer-feature.json` with metadata

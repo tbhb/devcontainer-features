@@ -5,7 +5,5 @@
   "description": "Fish shell-like syntax highlighting for zsh.",
   "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/zsh-syntax-highlighting",
   "options": {},
-  "installsAfter": [
-    "ghcr.io/devcontainers/features/common-utils"
-  ]
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
 }

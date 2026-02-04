@@ -1,6 +1,6 @@
 # zsh-syntax-highlighting
 
-Installs [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), a fish-like syntax highlighting plugin for zsh.
+Installs [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), a syntax highlighting plugin for zsh inspired by the Fish shell.
 
 ## Usage
 
@@ -14,8 +14,8 @@ Installs [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highl
 
 ## Configuration
 
-After installation, the plugin is automatically sourced in your `.zshrc`. Commands are highlighted as you type:
+After installation, the plugin sources automatically in your `.zshrc`. The plugin highlights commands as you type:
 
-- Valid commands appear in green
-- Invalid commands appear in red
-- Strings, options, and paths are highlighted distinctly
+- Valid commands display in green
+- Invalid commands display in red
+- Strings, options, and paths display with distinct highlighting
