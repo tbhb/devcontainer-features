@@ -1,0 +1,16 @@
+{
+  "test": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "just": {}
+    }
+  },
+  "version": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "just": {
+        "version": "1.40.0"
+      }
+    }
+  }
+}

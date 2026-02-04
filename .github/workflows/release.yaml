@@ -1,0 +1,50 @@
+---
+name: Release features
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      packages: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Publish features
+        uses: devcontainers/action@1082abd5d2bf3a11abccba70eef98df068277772 # v1
+        with:
+          publish-features: "true"
+          base-path-to-features: "./src"
+          generate-docs: "true"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR for documentation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          branch="docs-update-${GITHUB_RUN_ID}"
+          git checkout -b "${branch}"
+
+          git add src/**/README.md
+          if git commit -m "docs: auto-generate feature documentation [skip ci]"; then
+            git push origin "${branch}"
+            gh pr create \
+              --title "docs: auto-generate feature documentation" \
+              --body "Automated documentation update from release workflow"
+          else
+            echo "No documentation changes to commit"
+          fi

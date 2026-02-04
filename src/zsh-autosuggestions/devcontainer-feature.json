@@ -1,0 +1,11 @@
+{
+  "id": "zsh-autosuggestions",
+  "version": "1.0.0",
+  "name": "zsh-autosuggestions",
+  "description": "Fish-like autosuggestions for zsh based on command history.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/zsh-autosuggestions",
+  "options": {},
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}

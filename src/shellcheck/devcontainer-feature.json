@@ -1,0 +1,17 @@
+{
+  "id": "shellcheck",
+  "version": "1.0.0",
+  "name": "ShellCheck",
+  "description": "A static analysis tool for shell scripts.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/shellcheck",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of ShellCheck to install (e.g., '0.10.0' or 'latest')"
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "zsh-syntax-highlighting",
+  "version": "1.0.0",
+  "name": "zsh-syntax-highlighting",
+  "description": "Fish shell-like syntax highlighting for zsh.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/zsh-syntax-highlighting",
+  "options": {},
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}

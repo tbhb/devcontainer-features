@@ -1,0 +1,23 @@
+[project]
+name = "devcontainer-features"
+version = "0.1.0"
+description = "Dev Container Features"
+requires-python = ">=3.13"
+
+[dependency-groups]
+dev = [
+    "codespell>=2.4",
+    "yamllint>=1.35",
+    "prek>=0.2",
+]
+
+[tool.codespell]
+skip = ".git,*.lock,node_modules"
+ignore-words-list = "crate,implementors"
+
+[tool.yamllint]
+extends = "default"
+
+[tool.yamllint.rules]
+line-length = { max = 120 }
+truthy = { check-keys = false }

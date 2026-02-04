@@ -1,0 +1,16 @@
+{
+  "test": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "shellcheck": {}
+    }
+  },
+  "version": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "shellcheck": {
+        "version": "0.10.0"
+      }
+    }
+  }
+}
