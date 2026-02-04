@@ -10,9 +10,11 @@ which just
 # Check version output
 just --version
 
-# Test basic functionality
-echo 'default:
-    @echo "Hello from just!"' > /tmp/Justfile
+# Test basic functionality with a simple Justfile
+cat > /tmp/Justfile << 'EOF'
+default:
+	@echo "Hello from just!"
+EOF
 
 cd /tmp && just
 

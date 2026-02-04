@@ -29,11 +29,19 @@ esac
 
 # Get download URL
 if [ "${VERSION}" = "latest" ]; then
-    DOWNLOAD_URL=$(curl -s https://api.github.com/repos/koalaman/shellcheck/releases/latest \
-        | grep "browser_download_url.*linux\.${ARCH}\.tar\.xz" \
-        | cut -d '"' -f 4)
-    if [ -z "${DOWNLOAD_URL}" ]; then
+    # Get latest release info
+    RELEASE_INFO=$(curl -sL https://api.github.com/repos/koalaman/shellcheck/releases/latest)
+
+    # Try jq first if available, otherwise use grep
+    if command -v jq &> /dev/null; then
+        DOWNLOAD_URL=$(echo "${RELEASE_INFO}" | jq -r ".assets[] | select(.name | contains(\"linux.${ARCH}.tar.xz\")) | .browser_download_url")
+    else
+        DOWNLOAD_URL=$(echo "${RELEASE_INFO}" | grep -oP "\"browser_download_url\":\s*\"[^\"]*linux\.${ARCH}\.tar\.xz\"" | cut -d '"' -f 4)
+    fi
+
+    if [ -z "${DOWNLOAD_URL}" ] || [ "${DOWNLOAD_URL}" = "null" ]; then
         echo "ERROR: Could not find download URL for architecture ${ARCH}"
+        echo "API response: ${RELEASE_INFO}" | head -50
         exit 1
     fi
 else
