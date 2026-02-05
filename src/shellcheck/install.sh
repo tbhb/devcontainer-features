@@ -5,6 +5,12 @@ VERSION="${VERSION:-latest}"
 
 echo "Installing ShellCheck ${VERSION}..."
 
+# Build curl auth header if GITHUB_TOKEN is available (helps with rate limits)
+CURL_OPTS=(-sL --fail --retry 3 --retry-delay 5)
+if [ -n "${GITHUB_TOKEN}" ]; then
+    CURL_OPTS+=(-H "Authorization: token ${GITHUB_TOKEN}")
+fi
+
 # Determine architecture
 ARCH=$(uname -m)
 case "${ARCH}" in
@@ -29,8 +35,12 @@ esac
 
 # Get download URL
 if [ "${VERSION}" = "latest" ]; then
-    # Get latest release info
-    RELEASE_INFO=$(curl -sL https://api.github.com/repos/koalaman/shellcheck/releases/latest)
+    echo "Fetching latest release info from GitHub API..."
+    if ! RELEASE_INFO=$(curl "${CURL_OPTS[@]}" https://api.github.com/repos/koalaman/shellcheck/releases/latest); then
+        echo "ERROR: Failed to fetch release info from GitHub API"
+        echo "This may be due to rate limiting. Set GITHUB_TOKEN to authenticate."
+        exit 1
+    fi
 
     # Try jq first if available, otherwise use grep
     if command -v jq &> /dev/null; then
@@ -52,7 +62,22 @@ echo "Downloading from ${DOWNLOAD_URL}..."
 
 # Download and install
 TMP_DIR=$(mktemp -d)
-curl -sSL "${DOWNLOAD_URL}" -o "${TMP_DIR}/shellcheck.tar.xz"
+if ! curl "${CURL_OPTS[@]}" "${DOWNLOAD_URL}" -o "${TMP_DIR}/shellcheck.tar.xz"; then
+    echo "ERROR: Failed to download shellcheck from ${DOWNLOAD_URL}"
+    rm -rf "${TMP_DIR}"
+    exit 1
+fi
+
+# Verify it's actually an xz archive before extracting
+if ! file "${TMP_DIR}/shellcheck.tar.xz" | grep -q "XZ compressed"; then
+    echo "ERROR: Downloaded file is not a valid XZ archive"
+    echo "File type: $(file "${TMP_DIR}/shellcheck.tar.xz")"
+    echo "First 100 bytes:"
+    head -c 100 "${TMP_DIR}/shellcheck.tar.xz"
+    rm -rf "${TMP_DIR}"
+    exit 1
+fi
+
 tar -xJf "${TMP_DIR}/shellcheck.tar.xz" -C "${TMP_DIR}"
 mv "${TMP_DIR}"/shellcheck-*/shellcheck /usr/local/bin/
 chmod +x /usr/local/bin/shellcheck
