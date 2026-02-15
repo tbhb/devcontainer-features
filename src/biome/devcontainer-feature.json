@@ -1,0 +1,15 @@
+{
+  "id": "biome",
+  "version": "1.0.0",
+  "name": "Biome",
+  "description": "Installs Biome, a fast formatter and linter for JavaScript, TypeScript, JSON, and more.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/biome",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of Biome to install (e.g., '2.3.14' or 'latest')"
+    }
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}
