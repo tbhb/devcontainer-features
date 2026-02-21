@@ -1,6 +1,6 @@
 {
   "id": "shellcheck",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "ShellCheck",
   "description": "A static analysis tool for shell scripts.",
   "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/shellcheck",
