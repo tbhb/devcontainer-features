@@ -1,0 +1,15 @@
+{
+  "id": "chezmoi",
+  "version": "1.0.0",
+  "name": "chezmoi",
+  "description": "Installs chezmoi, a dotfile manager that helps you manage your dotfiles across multiple machines.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/chezmoi",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of chezmoi to install (e.g., '2.69.4' or 'latest')"
+    }
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}

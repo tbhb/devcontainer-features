@@ -1,7 +1,9 @@
 autosuggestions?
+chezmoi
 CLI
 [dD]ev
 devcontainers?
+dotfiles?
 [fF]ish
 [sS]hell[cC]heck
 uv

@@ -1,0 +1,16 @@
+{
+  "test": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "chezmoi": {}
+    }
+  },
+  "version": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "chezmoi": {
+        "version": "2.69.4"
+      }
+    }
+  }
+}
