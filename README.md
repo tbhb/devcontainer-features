@@ -20,6 +20,7 @@ Reference features in your `devcontainer.json`:
 |---------|-------------|
 | [just](src/just) | Command runner for project-specific tasks |
 | [shellcheck](src/shellcheck) | Static analysis tool for shell scripts |
+| [shfmt](src/shfmt) | Shell parser, formatter, and interpreter |
 | [zsh-autosuggestions](src/zsh-autosuggestions) | autosuggestions for zsh (Fish shell-style) |
 | [zsh-syntax-highlighting](src/zsh-syntax-highlighting) | Syntax highlighting for zsh (Fish shell-style) |
 

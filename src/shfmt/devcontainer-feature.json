@@ -1,0 +1,15 @@
+{
+  "id": "shfmt",
+  "version": "1.0.0",
+  "name": "shfmt",
+  "description": "Installs shfmt, a shell parser, formatter, and interpreter.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/shfmt",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of shfmt to install (e.g., '3.12.0' or 'latest')"
+    }
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}

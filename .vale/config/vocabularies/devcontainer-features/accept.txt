@@ -6,5 +6,6 @@ devcontainers?
 dotfiles?
 [fF]ish
 [sS]hell[cC]heck
+shfmt
 uv
 [zZ]sh
