@@ -1,0 +1,15 @@
+{
+  "id": "tmux",
+  "version": "1.0.0",
+  "name": "tmux",
+  "description": "Installs tmux, a terminal multiplexer.",
+  "documentationURL": "https://github.com/tbhb/devcontainer-features/tree/main/src/tmux",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of tmux to install (e.g., '3.6a' or 'latest')"
+    }
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}
